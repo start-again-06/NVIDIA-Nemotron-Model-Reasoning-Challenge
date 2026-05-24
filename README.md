@@ -151,7 +151,7 @@ The objective is to guide the model toward explicit and interpretable reasoning 
 The framework explicitly generates intermediate reasoning steps:
 
 ```math
-P(y \mid x)=\prod_{t=1}^{T} P\left(y_t \mid y_{<t}, x\right)
+P(y \mid x) = \prod_{t=1}^{T} P\left(y_t \mid y_{<t}, x\right)
 ```
 
 Where:
