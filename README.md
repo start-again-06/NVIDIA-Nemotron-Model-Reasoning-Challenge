@@ -61,8 +61,7 @@ P --> Q[Evaluation Pipeline]
 
 Q --> R[Accuracy]
 Q --> S[Logical Consistency]
-Q --> T[Pass@k]
-Q --> U[Reasoning Quality]
+Q --> T[Reasoning Quality]
 ```
 
 ---
