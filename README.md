@@ -2,11 +2,25 @@
 
 ## Overview
 
-This project presents a reasoning-focused large language model (LLM) framework developed for the NVIDIA Nemotron Model Reasoning Challenge. The repository explores advanced reasoning capabilities using NVIDIA Nemotron models, combining structured prompting, chain-of-thought reasoning, evaluation pipelines, and scalable experimentation for complex problem-solving tasks.
+This project presents a reasoning-focused large language model (LLM) framework developed for the NVIDIA Nemotron Model Reasoning Challenge on Kaggle. The repository explores advanced reasoning capabilities using NVIDIA Nemotron models, combining structured prompting, chain-of-thought reasoning, evaluation pipelines, and scalable experimentation for complex problem-solving tasks.
 
 The framework integrates transformer-based language models with reasoning-centric methodologies to improve logical consistency, multi-step inference, mathematical reasoning, and contextual understanding across diverse benchmarks.
 
 The project is designed to provide reproducible workflows for inference, evaluation, and reasoning optimization using NVIDIA Nemotron and compatible open-source LLM ecosystems.
+
+---
+
+# Kaggle Challenge Performance
+
+- Competition: NVIDIA Nemotron Model Reasoning Challenge
+- Platform: Kaggle
+- Final Rank: **1197 / 3433**
+- Focus Area: Reasoning-Centric Large Language Models
+- Tasks Included:
+  - Mathematical reasoning
+  - Logical inference
+  - Multi-step problem solving
+  - Structured reasoning generation
 
 ---
 
@@ -137,7 +151,7 @@ The objective is to guide the model toward explicit and interpretable reasoning 
 The framework explicitly generates intermediate reasoning steps:
 
 ```math
-P(y|x) = \prod_{t=1}^{T} P(y_t | y_{<t}, x)
+P(y \mid x) = \prod_{t=1}^{T} P(y_t \mid y_{<t}, x)
 ```
 
 Where:
@@ -160,7 +174,10 @@ This enables:
 The transformer architecture uses scaled dot-product attention:
 
 ```math
-Attention(Q,K,V) = softmax\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+\text{Attention}(Q, K, V) =
+\text{softmax}\left(
+\frac{QK^{T}}{\sqrt{d_k}}
+\right)V
 ```
 
 Where:
@@ -201,14 +218,15 @@ G --> H[Final Output y]
 The model predicts the next token probability using:
 
 ```math
-P(w_t|w_{<t}) = softmax(W_h h_t + b)
+P(w_t \mid w_{<t}) =
+\text{softmax}(W_h h_t + b)
 ```
 
 Where:
 
-- \(h_t\) = hidden transformer representation
-- \(W_h\) = learnable projection matrix
-- \(b\) = bias term
+- \(h_t\) = Hidden transformer representation
+- \(W_h\) = Learnable projection matrix
+- \(b\) = Bias term
 
 ---
 
@@ -219,7 +237,11 @@ Where:
 The training objective minimizes cross-entropy loss:
 
 ```math
-\mathcal{L}_{CE} = - \sum_{t=1}^{T} \log P(y_t | y_{<t}, x)
+\mathcal{L}_{CE}
+=
+-
+\sum_{t=1}^{T}
+\log P(y_t \mid y_{<t}, x)
 ```
 
 ---
@@ -229,20 +251,30 @@ The training objective minimizes cross-entropy loss:
 Reasoning consistency can be formulated as:
 
 ```math
-\mathcal{L}_{reason} = ||R_{pred} - R_{target}||_2^2
+\mathcal{L}_{reason}
+=
+\left\|
+R_{pred}
+-
+R_{target}
+\right\|_2^2
 ```
 
 Where:
 
-- \(R_{pred}\) = predicted reasoning trace
-- \(R_{target}\) = expected reasoning trace
+- \(R_{pred}\) = Predicted reasoning trace
+- \(R_{target}\) = Expected reasoning trace
 
 ---
 
 ## Total Optimization Objective
 
 ```math
-\mathcal{L}_{total} = \lambda_1 \mathcal{L}_{CE} + \lambda_2 \mathcal{L}_{reason}
+\mathcal{L}_{total}
+=
+\lambda_1 \mathcal{L}_{CE}
++
+\lambda_2 \mathcal{L}_{reason}
 ```
 
 Where:
@@ -284,7 +316,6 @@ I --> J[Improved Reasoning Model]
 The repository evaluates:
 
 - Accuracy
-- Pass@k
 - Logical consistency
 - Multi-step reasoning quality
 - Context retention
@@ -335,7 +366,6 @@ mindmap
 
     Evaluation
       Accuracy
-      Pass@k
       Logical Consistency
       Reasoning Quality
 
