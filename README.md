@@ -182,10 +182,10 @@ The transformer architecture uses scaled dot-product attention:
 
 Where:
 
-- \(Q\) = Query matrix
-- \(K\) = Key matrix
-- \(V\) = Value matrix
-- \(d_k\) = Key dimension scaling factor
+- $Q$ = Query matrix
+- $K$ = Key matrix
+- $V$ = Value matrix
+- $d_k$ = Key dimension scaling factor
 
 This mechanism enables long-context reasoning and contextual understanding.
 
@@ -218,16 +218,14 @@ G --> H[Final Output y]
 The model predicts the next token probability using:
 
 ```math
-P(w_t \mid w_{<t}) =
-\text{softmax}(W_h h_t + b)
+P(w_t \mid w_{<t}) = \text{softmax}(W_h h_t + b)
 ```
 
 Where:
 
-- \(h_t\) = Hidden transformer representation
-- \(W_h\) = Learnable projection matrix
-- \(b\) = Bias term
-
+- $h_t$ = Hidden transformer representation
+- $W_h$ = Learnable projection matrix
+- $b$ = Bias term
 ---
 
 # Mathematical Formulation
@@ -237,11 +235,7 @@ Where:
 The training objective minimizes cross-entropy loss:
 
 ```math
-\mathcal{L}_{CE}
-=
--
-\sum_{t=1}^{T}
-\log P(y_t \mid y_{<t}, x)
+\mathcal{L}_{CE} = -\sum_{t=1}^{T} \log P\left(y_t \mid y_{\lt t}, x\right)
 ```
 
 ---
@@ -251,35 +245,25 @@ The training objective minimizes cross-entropy loss:
 Reasoning consistency can be formulated as:
 
 ```math
-\mathcal{L}_{reason}
-=
-\left\|
-R_{pred}
--
-R_{target}
-\right\|_2^2
+\mathcal{L}_{reason} = \left\| R_{pred} - R_{target} \right\|_2^2
 ```
 
 Where:
 
-- \(R_{pred}\) = Predicted reasoning trace
-- \(R_{target}\) = Expected reasoning trace
+- $R_{\text{pred}}$ = Predicted reasoning trace
+- $R_{\text{target}}$ = Expected reasoning trace
 
 ---
 
 ## Total Optimization Objective
 
 ```math
-\mathcal{L}_{total}
-=
-\lambda_1 \mathcal{L}_{CE}
-+
-\lambda_2 \mathcal{L}_{reason}
+\mathcal{L}_{total} = \lambda_1 \mathcal{L}_{CE} + \lambda_2 \mathcal{L}_{reason}
 ```
 
 Where:
 
-- \(\lambda_1\), \(\lambda_2\) are balancing coefficients
+- $\lambda_1$, $\lambda_2$ = Balancing coefficients
 
 ---
 
