@@ -156,9 +156,9 @@ P(y \mid x) = \prod_{t=1}^{T} P\left(y_t \mid y_{\lt t}, x\right)
 
 Where:
 
-- \(x\) represents the input prompt
-- \(y_t\) represents generated reasoning tokens
-- \(T\) is the sequence length
+- `\(x\)` represents the input prompt
+- `\(y_t\)` represents generated reasoning tokens
+- `\(T\)` is the sequence length
 
 This enables:
 
