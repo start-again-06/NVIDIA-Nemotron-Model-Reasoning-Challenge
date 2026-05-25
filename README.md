@@ -218,7 +218,7 @@ G --> H[Final Output y]
 The model predicts the next token probability using:
 
 ```math
-P(w_t \mid w_{<t}) = \text{softmax}(W_h h_t + b)
+P(w_t \mid w_{\text{<}t}) = \text{softmax}(W_h h_t + b)
 ```
 
 Where:
