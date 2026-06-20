@@ -14,7 +14,7 @@ The project is designed to provide reproducible workflows for inference, evaluat
 
 - Competition: NVIDIA Nemotron Model Reasoning Challenge
 - Platform: Kaggle
-- Final Rank: **1197 / 3433**
+- Final Rank: **436 / 4182**
 - Focus Area: Reasoning-Centric Large Language Models
 - Tasks Included:
   - Mathematical reasoning
